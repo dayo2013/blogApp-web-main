@@ -1,16 +1,11 @@
 import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
 import Header from "./components/Header";
 import { WagmiConfig, configureChains, createConfig, sepolia } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 import { infuraProvider } from "wagmi/providers/infura";
-import ConnectionProvider from "./context";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SinglePost from "./pages/SinglePost";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [sepolia],
@@ -39,16 +34,7 @@ function App() {
   return (
     <WagmiConfig config={config}>
       <RainbowKitProvider chains={chains}>
-        <ConnectionProvider>
-          <BrowserRouter>
             <Header />
-            <ToastContainer />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="post/:postid" element={<SinglePost />} />
-            </Routes>
-          </BrowserRouter>
-        </ConnectionProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );
