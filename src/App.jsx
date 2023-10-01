@@ -6,6 +6,7 @@ import { infuraProvider } from "wagmi/providers/infura";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import "react-toastify/dist/ReactToastify.css";
+import Createpost from "./components/Createpost";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [sepolia],
@@ -35,6 +36,7 @@ function App() {
     <WagmiConfig config={config}>
       <RainbowKitProvider chains={chains}>
             <Header />
+            <Createpost/>
       </RainbowKitProvider>
     </WagmiConfig>
   );
